@@ -43,7 +43,12 @@ function playGame(n) {
     let computerScore = 0;
     
     for (let i = 0; i < n; i++) {
-        playRound(getHumanChoice(), getComputerChoice())
+        let result = playRound(getHumanChoice(), getComputerChoice())
+        if (result === 'win') {
+            humanScore++
+        } else if (result === 'loss') {
+            computerScore++;
+        }
     }
     
     if (computerScore === humanScore) {
