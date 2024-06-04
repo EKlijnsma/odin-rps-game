@@ -1,5 +1,9 @@
-// create list of options
-const gameOptions = ['Rock', 'Paper', 'Scissors']
+// Create list of options
+const gameOptions = ['rock', 'paper', 'scissors']
+
+// Initialize score variables
+let humanScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
     // get random number x between 0-2 (inclusive)
@@ -10,15 +14,5 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    // create input variable
-    // ask for input and store answer in variable
-    let i = parseInt(prompt("Type [0] for Rock, [1] for Paper or [2] for Scissors: "))
-
-    // verify that input is valid?
-    // if not valid, new iteration
-    // If valid, return value
-    return gameOptions[i]
+    return prompt("Type your choice: Rock, Paper or Scissors: ").toLowerCase()
 }
-
-console.log(getHumanChoice())
-console.log(getComputerChoice())
