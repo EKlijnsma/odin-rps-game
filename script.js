@@ -33,6 +33,16 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
+function displayResult(humanScore, computerScore) {
+    const score = `${humanScore} - ${computerScore}`
+    if (computerScore === humanScore) {
+        console.log(`The game is tied: ${score}`)
+    } else if (computerScore > humanScore) {
+        console.log(`You lost: ${score}`)
+    } else {
+        console.log(`You won: ${score}`)
+    }
+}
 
 function playGame(numberOfRounds = 5) {
     // Initialize score variables
@@ -48,18 +58,6 @@ function playGame(numberOfRounds = 5) {
         }
     }
     displayResult(humanScore, computerScore)
-}
-
-
-function displayResult(humanScore, computerScore) {
-    const score = `${humanScore} - ${computerScore}`
-    if (computerScore === humanScore) {
-        console.log(`The game is tied: ${score}`)
-    } else if (computerScore > humanScore) {
-        console.log(`You lost: ${score}`)
-    } else {
-        console.log(`You won: ${score}`)
-    }
 }
 
 playGame();
