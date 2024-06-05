@@ -40,14 +40,13 @@ function playGame(numberOfRounds = 5) {
     let computerScore = 0;
     
     for (let i = 0; i < numberOfRounds; i++) {
-        let result = playRound(getHumanChoice(), getComputerChoice())
+        const result = playRound(getHumanChoice(), getComputerChoice())
         if (result === 'win') {
             humanScore++
         } else if (result === 'loss') {
             computerScore++;
         }
     }
-
     displayResult(humanScore, computerScore)
 }
 
