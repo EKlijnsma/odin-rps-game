@@ -1,48 +1,45 @@
-// Create list of options
 const gameOptions = ['rock', 'paper', 'scissors']
 
-// Function to get a random computer choice
+
 function getComputerChoice() {
-    // get random number x between 0-2 (inclusive)
-    let i = Math.floor(Math.random() * 3);
-    
-    // return index x of list y
+    const i = Math.floor(Math.random() * 3);
     return gameOptions[i];
 }
 
-// Function to get the human players' choice
+
 function getHumanChoice() {
+    // Case-insensitive, but the user must add a valid response. If no valid response is given (e.g. 'Dog") 
+    // the player loses the round because of how the playRound function is set-up
     return prompt("Type your choice: Rock, Paper or Scissors: ").toLowerCase()
 }
 
-// Function to play a round of RPS
+
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
-        // Identical choices, tie
+        // Identical choices is a tie
         console.log(`Its a tie! You both chose ${humanChoice}`)
         return 'tie'
     } else if (
+        // cases where the human wins
         humanChoice === 'rock' && computerChoice === 'scissors' ||
         humanChoice === 'paper' && computerChoice === 'rock' ||
         humanChoice === 'scissors' && computerChoice === 'paper'
     ) {
-        // Winning cases, human wins
         console.log(`You win! ${humanChoice} beats ${computerChoice}!`)
         return 'win'
     } else {
-        // All other cases, human loses
         console.log(`You lose! ${humanChoice} loses to ${computerChoice}!`)
         return 'loss'
     }
 }
 
-// Function to play a full game (5 rounds) of RPS
-function playGame(n) {
+
+function playGame(numberOfRounds = 5) {
     // Initialize score variables
     let humanScore = 0;
     let computerScore = 0;
     
-    for (let i = 0; i < n; i++) {
+    for (let i = 0; i < numberOfRounds; i++) {
         let result = playRound(getHumanChoice(), getComputerChoice())
         if (result === 'win') {
             humanScore++
@@ -50,14 +47,20 @@ function playGame(n) {
             computerScore++;
         }
     }
-    
+
+    displayResult(humanScore, computerScore)
+}
+
+
+function displayResult(humanScore, computerScore) {
+    const score = `${humanScore} - ${computerScore}`
     if (computerScore === humanScore) {
-        console.log(`The game is tied: ${humanScore} - ${computerScore}`)
+        console.log(`The game is tied: ${score}`)
     } else if (computerScore > humanScore) {
-        console.log(`You lost: ${humanScore} - ${computerScore}`)
+        console.log(`You lost: ${score}`)
     } else {
-        console.log(`You won: ${humanScore} - ${computerScore}`)
+        console.log(`You won: ${score}`)
     }
 }
 
-playGame(5);
+playGame();
