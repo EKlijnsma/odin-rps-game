@@ -44,20 +44,9 @@ function displayResult(humanScore, computerScore) {
     }
 }
 
-function playGame(numberOfRounds = 5) {
-    // Initialize score variables
-    let humanScore = 0;
-    let computerScore = 0;
-    
-    for (let i = 0; i < numberOfRounds; i++) {
-        const result = playRound(getHumanChoice(), getComputerChoice())
-        if (result === 'win') {
-            humanScore++
-        } else if (result === 'loss') {
-            computerScore++;
-        }
-    }
-    displayResult(humanScore, computerScore)
-}
-
-playGame();
+const rockBtn = document.querySelector("#r-btn");
+const paperBtn = document.querySelector("#p-btn");
+const scissorsBtn = document.querySelector("#s-btn");
+rockBtn.addEventListener("click", () => playRound('rock', getComputerChoice()))
+paperBtn.addEventListener("click", () => playRound('paper', getComputerChoice()))
+scissorsBtn.addEventListener("click", () => playRound('scissors', getComputerChoice()))
